@@ -50,7 +50,7 @@ namespace CRUD_Practice.Controllers
                 oldUser.UserAge = user.UserAge;
 
             }
-            return RedirectToAction("Index", Users);        //Redirected to Index with User Updated Details
+            return RedirectToAction("Index", Users);       
         }
 
         [HttpGet]
@@ -62,14 +62,14 @@ namespace CRUD_Practice.Controllers
         }
 
         [HttpPost]
-        [Route("Details")]
-        public IActionResult Details(User user)
+        [Route("Details")]                              
+        public IActionResult Details(User user)        //passes user to show details
         {
             var i=Users.Where(i=>i.Id==user.Id).Select(s => s).FirstOrDefault();  
             return View("Index");       
         }
                 
-        [Route("Delete")]       //Deleted view created
+        [Route("Delete")]       
         public IActionResult Delete(int id)
         {
             User data = Users.Find(x => x.Id == id);
