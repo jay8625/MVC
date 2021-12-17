@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "11412976-569a-4491-939f-6cdf84d3a693": {
+      "ProjectGuid": "11412976-569a-4491-939f-6cdf84d3a693",
+      "DisplayName": "CRUD Practice",
+      "ColorIndex": 0
+    },
+    "7b953a17-c5c6-482f-b8f3-6e8b7b2f3043": {
+      "ProjectGuid": "7b953a17-c5c6-482f-b8f3-6e8b7b2f3043",
+      "DisplayName": "WebApplication1",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
