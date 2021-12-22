@@ -7,6 +7,9 @@ namespace CRUD_Practice.Controllers
     public class PracticeController : Controller
     {
         public static List<User> Users = new List<User>();  //List to store Users
+
+        public int FilterAge { get; private set; }
+
         public IActionResult Index()        //Will create index view
         {
             return View(Users);
@@ -17,6 +20,7 @@ namespace CRUD_Practice.Controllers
         public IActionResult Create()       //created create view
         {
             ViewBag.Messsage = "Enter the Details";     //Viewbag used to carry message data
+            ViewBag.Gender = new List<string> {"Male","Female","Other"};
             return View();
         }
 
@@ -30,9 +34,10 @@ namespace CRUD_Practice.Controllers
 
         [HttpGet]
         [Route("Edit")]     //Created edit view
-        public IActionResult Edit(int Id)       
+        public IActionResult Edit(int Id)
         {
-            ViewData["Message"] = "NOTE:Key cannot be change";      //Viewdata used to display Note
+            ViewBag.Gender = new List<string> { "Male", "Female", "Other" };
+            ViewData["Message"] = "NOTE:Id cannot be change";      //Viewdata used to display Note
             User user = Users.Where(i => i.Id.Equals(Id)).Select(s => s).FirstOrDefault();
             return View(user);
         }
@@ -48,9 +53,11 @@ namespace CRUD_Practice.Controllers
                 oldUser.UserFName = user.UserFName;
                 oldUser.UserLName = user.UserLName;
                 oldUser.UserAge = user.UserAge;
+                oldUser.Gender = user.Gender;
+                oldUser.FavMovie = user.FavMovie;
 
             }
-            return RedirectToAction("Index", Users);       
+            return RedirectToAction("Index", Users);
         }
 
         [HttpGet]
@@ -62,24 +69,32 @@ namespace CRUD_Practice.Controllers
         }
 
         [HttpPost]
-        [Route("Details")]                              
+        [Route("Details")]
         public IActionResult Details(User user)        //passes user to show details
         {
-            var i=Users.Where(i=>i.Id==user.Id).Select(s => s).FirstOrDefault();  
-            return View("Index");       
+            var Details = Users.Where(i => i.Id == user.Id).Select(s => s).FirstOrDefault();
+            return View("Index");
         }
-                
-        [Route("Delete")]       
+
+        [Route("Delete")]
         public IActionResult Delete(int id)
         {
             User data = Users.Find(x => x.Id == id);
 
-            if (data!=null)
-            { 
+            if (data != null)
+            {
                 Users.Remove(data);
             }
             return RedirectToAction("Index");       //Deleted user and redirected to Index
 
+        }      
+    
+        [HttpGet]
+        [Route("Sort")]
+        public IActionResult Sort(User user)
+        {
+            var Sorted = Users.OrderByDescending(x => x.UserAge);
+            return View("index",Sorted);
         }
     }
 }

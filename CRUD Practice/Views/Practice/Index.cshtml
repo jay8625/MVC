@@ -9,6 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -24,6 +25,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserAge)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>   
+            <th>
+                @Html.DisplayNameFor(model => model.FavMovie)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.FavCharacter)
+            </th> 
             <th></th>
         </tr>
     </thead>
@@ -42,6 +52,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UserAge)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td> 
+             <td>
+                @Html.DisplayFor(modelItem => item.FavMovie)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.FavCharacter)
+            </td> 
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
                 @Html.ActionLink("Details", "Details", new {  id=item.Id }) |

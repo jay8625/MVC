@@ -33,12 +33,30 @@
                 <input asp-for="UserAge" class="form-control" />
                 <span asp-validation-for="UserAge" class="text-danger"></span>
             </div>
+            <div>
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="control-label" asp-items="new SelectList(ViewBag.Gender)"></select>               
+                <span asp-validation-for="Gender" class="text-danger"></span>
+             </div>      
+             <ul>  
+                <il><div><h6>Select your Favorite Movie</h6></div></il>
+                <li>End Game  : @Html.RadioButtonFor(m => m.FavMovie,"End Game")</li>
+                <li>Infinity War  : @Html.RadioButtonFor(m => m.FavMovie,"Infinity War")</li> 
+                <li>Far from Home  : @Html.RadioButtonFor(m => m.FavMovie,"Far from Home")</li> 
+                <li>No Way Home  : @Html.RadioButtonFor(m => m.FavMovie,"No Way Home")</li> 
+            </ul>
+            <ul>
+                 <il><div><h6>Select your Favorite Character</h6></div></il>
+                <li>IronMan : @Html.CheckBoxFor(c=>c.FavCharacter) </li>
+            </ul>
+          
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
 
 <div>
     <a asp-action="Index">Back to List</a>
