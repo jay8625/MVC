@@ -16,13 +16,13 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserFName)
+                @Html.DisplayNameFor(model => model.FName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserLName)
+                @Html.DisplayNameFor(model => model.LName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserAge)
+                @Html.DisplayNameFor(model => model.Age)
             </th>
             <th></th>
         </tr>
@@ -34,13 +34,13 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserFName)
+                @Html.DisplayFor(modelItem => item.FName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserLName)
+                @Html.DisplayFor(modelItem => item.LName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserAge)
+                @Html.DisplayFor(modelItem => item.Age)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

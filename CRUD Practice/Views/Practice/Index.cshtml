@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Index";
 }
-
 <h1>Index</h1>
 
 <p>
@@ -14,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                <a class="text-dark text-decoration-none" asp-controller="Practice" asp-action="Index">@Html.DisplayNameFor(model => model.Id)<i class="bi bi-sort-up"></i></a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserFName)
+                <a class="text-dark text-decoration-none" asp-controller="Practice" asp-action="SortFName">@Html.DisplayNameFor(model => model.FName)<i class="bi bi-sort-up"></i></a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserLName)
+                <a class="text-dark text-decoration-none" asp-controller="Practice" asp-action="SortLName">@Html.DisplayNameFor(model => model.LName)<i class="bi bi-sort-up"></i></a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserAge)
+                <a class="text-dark text-decoration-none" asp-controller="Practice" asp-action="Sort">@Html.DisplayNameFor(model => model.Age)<i class="bi bi-sort-numeric-up"></i></a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gender)
+                 <a class="text-dark text-decoration-none" asp-controller="Practice" asp-action="SortGen">@Html.DisplayNameFor(model => model.Gender)<i class="bi bi-sort-up"></i></a>
             </th>   
             <th>
                 @Html.DisplayNameFor(model => model.FavMovie)
@@ -38,35 +37,50 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserFName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserLName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserAge)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td> 
-             <td>
-                @Html.DisplayFor(modelItem => item.FavMovie)
-            </td> 
-            <td>
-                @Html.DisplayFor(modelItem => item.FavCharacter)
-            </td> 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.LName)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                    </td> 
+                     <td>
+                    @Html.DisplayFor(modelItem => item.FavMovie)
+                    </td> 
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FavCharacter)
+                    </td> 
+                    <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
+                    @* <a asp-action="@Html.Partial("Details",item)">Details</a>*@
+                    @Html.Partial("Details",item)
+                    @*<a href="#" onclick="ShowDetails(@item.Id)">Details</a>|*@
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
+                    </td>
+                    @*<td>
+                        <div id="@item.Id">
+                            @Html.Partial("Details",item)
+                        </div>
+                    </td>*@
+       </tr>
+        }
     </tbody>
 </table>
+@*<script>
+    function ShowDetails(id){
+       id.toggle();
+    }
+</script>*@
+
+
